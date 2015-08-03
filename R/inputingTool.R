@@ -1,7 +1,7 @@
 #'Inputting data to excel
 #'
 #'inputs what is asked
-#'@paramname,bf.eq5d,bf.gh,bf.pr,bf.mr,bf.vt,age,bf.strides,af.eq5d,af.gh,af.mr,af.vt,af.strides,char,illness
+#'@param name,bf.eq5d,bf.gh,bf.pr,bf.mr,bf.vt,age,bf.strides,af.eq5d,af.gh,af.mr,af.vt,af.strides,char,illness
 #'@return saving data to excel-csv file
 #'@export 
 do<-function()

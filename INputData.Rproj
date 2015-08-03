@@ -16,5 +16,4 @@ BuildType: Package
 PackageUseDevtools: Yes
 PackagePath: C:/Users/hawayi/Desktop/Inputdata
 PackageInstallArgs: --no-multiarch --with-keep.source
-PackageCheckArgs: --no-manual
-PackageRoxygenize: rd,collate,namespace
+PackageRoxygenize: rd,collate,namespace,vignette

@@ -1,5 +1,5 @@
-Package: INputData
-Title: What the Package Does (one line, title case)
+Package: Inputdata
+Title: input data to excel (one line, title case)
 Describtion:Inputting data to excel
 Version: 0.0.0.9000
 Authors@R: person("Dongseok", "Shin", email = "andy4712@naver.com", role = c("aut", "cre"))
