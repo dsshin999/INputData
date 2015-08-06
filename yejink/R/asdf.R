@@ -1,3 +1,5 @@
+#'@return
+#'@export
 analyze<-function(){library(shiny)
   library(dplyr)
   library(ggplot2)
