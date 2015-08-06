@@ -1,0 +1,17 @@
+{
+    "contents" : "Package: shiny\nTitle: What the Package Does (one line, title case)\nVersion: 0.0.0.9000\nAuthor: person(\"First\", \"Last\", email = \"first.last@example.com\", role = c(\"aut\", \"cre\"))\nDescription: What the package does (one paragraph).\nDepends: R (>= 3.2.1)\nLicense: What license is it under?\nLazyData: true\n",
+    "created" : 1438853418719.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2197142200",
+    "id" : "7E97EEC7",
+    "lastKnownWriteTime" : 1438853436,
+    "path" : "~/shiny/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "dcf"
+}
