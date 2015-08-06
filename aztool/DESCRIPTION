@@ -1,0 +1,9 @@
+Package: aztool
+Title: Uses for analying data
+Version: 0.0.0.9000
+Author: Dongseok Shin <andy4712@naver.com
+Maintainer: Dongseok Shin <andy4712@naver.com>
+Description: analyze excel data by drawing bar graph
+Depends: R (>= 3.2.1)
+License: andy4712@naver.com
+LazyData: true
