@@ -5,7 +5,7 @@ analyze<-function(){library(shiny)
   library(ggplot2)
   library(datasets)
   
-  dat <- read.csv("/Users/gimyejin/Desktop/chart.csv", header=T,stringsAsFactors = F)
+  dat <- read.csv(file.choose(), header=T,stringsAsFactors = F)
   experimental<-filter(dat, char=="experimental")
   experimental.50<-filter(experimental, age<60)
   experimental.60<-filter(experimental, age>=60, age<70)
