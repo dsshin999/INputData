@@ -182,11 +182,11 @@ analyze<-function(){library(shiny)
     
   }
   
-  ui<-navbarPage("환자분석툴",
-                 tabPanel("종합",
+  ui<-navbarPage("Tools for Analyzing Patients Status",
+                 tabPanel("All",
                           pageWithSidebar
                           (
-                          headerPanel("실험군 대조군 비교"),
+                          headerPanel("Differences between experimental and comparison group"),
                           
                           sidebarPanel(
                             selectInput("x", "Please Select x-axix", choices=c("age", "illness")),
@@ -197,10 +197,10 @@ analyze<-function(){library(shiny)
                           mainPanel(
                             plotOutput('plot'))
                           )),
-                 tabPanel("기간별 걸음수",
+                 tabPanel("Strides along to month",
                           pageWithSidebar
                           (
-                          headerPanel("기간별 평균 걸음수 비교"),
+                          headerPanel("Comparing Strides along to month"),
                           
                           sidebarPanel(
                             selectInput("month1", "select month", choices=c("month1",  "month2",  "month3",  "month4",  "month5",  "month6",  "month7",  "month8",  "month9",  "month10", "month11", "month12")),
@@ -210,10 +210,10 @@ analyze<-function(){library(shiny)
                           mainPanel(
                             plotOutput('plot2'))
                           )),
-                 tabPanel("개인 걸음수",
+                 tabPanel("Individual Strides",
                           pageWithSidebar
                           (
-                          headerPanel("기간별 개인 걸음수 비"),
+                          headerPanel("Comparing Individual strides along to month"),
                           
                           sidebarPanel(
                             selectInput("month3", "select month", choices=c("month1",  "month2",  "month3",  "month4",  "month5",  "month6",  "month7",  "month8",  "month9",  "month10", "month11", "month12")),
