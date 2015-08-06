@@ -3,9 +3,6 @@ library(ggplot2)
 library(dplyr)
 library(datasets)
 library(RCurl)
-x <- getURLContent("https://www.dropbox.com/s/691yjglqz1ts895/chart.csv")
-dat <- read.table(text = x, header=T, stringsAsFactors = F, sep=',')
-
 shinyUI(
 
 navbarPage("Tools for Analyzing Patients Status",
@@ -16,7 +13,7 @@ navbarPage("Tools for Analyzing Patients Status",
                     
                     sidebarPanel(
                       selectInput("x", "Please Select x-axix", choices=c("age", "illness")),
-                      selectInput("y", "indexes", choices=colnames(total)),
+                      selectInput("y", "indexes", index),
                       selectInput("color", "Seperation", c("None", "char"))
                     ),
                     
@@ -44,7 +41,7 @@ navbarPage("Tools for Analyzing Patients Status",
                     sidebarPanel(
                       selectInput("month3", "select month", choices=c("month1",  "month2",  "month3",  "month4",  "month5",  "month6",  "month7",  "month8",  "month9",  "month10", "month11", "month12")),
                       selectInput("month4", "select month", choices=c("month1",  "month2",  "month3",  "month4",  "month5",  "month6",  "month7",  "month8",  "month9",  "month10", "month11", "month12")),
-                      selectInput("names", "Name : ", choices=c("None", dat$name))
+                      selectInput("names", "Name : ", c("None", personname))
                     ),
                     
                     
