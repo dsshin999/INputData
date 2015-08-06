@@ -1,11 +1,12 @@
 #' @return
 #' @export
-library(shiny)
-library(datasets)
-library(ggplot2)
-library(dplyr)
+
 
 ds<-function(){
+  library(shiny)
+  library(datasets)
+  library(ggplot2)
+  library(dplyr)
   dat<-read.csv(file.choose(),header=T,stringsAsFactors = F)
   experimental<-filter(dat, char=="experimental")
   experimental.50<-filter(experimental, age<60)
