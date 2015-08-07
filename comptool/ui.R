@@ -1,75 +1,25 @@
 library(shiny)
-library(datasets)
 library(ggplot2)
 library(dplyr)
+library(datasets)
 
-dat<-read.csv(file.choose(),header=T,stringsAsFactors = F)
-experimental<-filter(dat, char=="experimental")
-experimental.50<-filter(experimental, age<60) 
-experimental.60<-filter(experimental, age>=60, age<70) 
-experimental.70<-filter(experimental, age>=70, age<80) 
-experimental.over<-filter(experimental, age>=80) 
-comparison<-filter(dat, char=="comparison")
-comparison.50<-filter(comparison, age<60) 
-comparison.60<-filter(comparison, age>=60, age<70) 
-comparison.70<-filter(comparison, age>=70, age<80) 
-comparison.over<-filter(comparison, age>=80) 
+	dat <- read.csv("/Users/gimyejin/Desktop/chart.csv", header=T,stringsAsFactors = F)
 
+	shinyUI(pageWithSidebar(
 
-aver.ex.50<-summarise(experimental.50, aver_bf.eq=mean(bf.eq5d), aver_bf.gh=mean(bf.gh), aver_bf.mr=mean(bf.mr), aver_bf.vt=mean(bf.vt), aver_bf.st=mean(bf.strides), aver_af.eq=mean(af.eq5d), aver_af.gh=mean(af.gh), aver_af.mr=mean(af.mr), aver_af.vt=mean(af.vt), aver_af.st=mean(af.strides))
-aver.ex.60<-summarise(experimental.60, aver_bf.eq=mean(bf.eq5d), aver_bf.gh=mean(bf.gh), aver_bf.mr=mean(bf.mr), aver_bf.vt=mean(bf.vt), aver_bf.st=mean(bf.strides), aver_af.eq=mean(af.eq5d), aver_af.gh=mean(af.gh), aver_af.mr=mean(af.mr), aver_af.vt=mean(af.vt), aver_af.st=mean(af.strides))
-aver.ex.70<-summarise(experimental.70, aver_bf.eq=mean(bf.eq5d), aver_bf.gh=mean(bf.gh), aver_bf.mr=mean(bf.mr), aver_bf.vt=mean(bf.vt), aver_bf.st=mean(bf.strides), aver_af.eq=mean(af.eq5d), aver_af.gh=mean(af.gh), aver_af.mr=mean(af.mr), aver_af.vt=mean(af.vt), aver_af.st=mean(af.strides))
-aver.ex.over<-summarise(experimental.over, aver_bf.eq=mean(bf.eq5d), aver_bf.gh=mean(bf.gh), aver_bf.mr=mean(bf.mr), aver_bf.vt=mean(bf.vt), aver_bf.st=mean(bf.strides), aver_af.eq=mean(af.eq5d), aver_af.gh=mean(af.gh), aver_af.mr=mean(af.mr), aver_af.vt=mean(af.vt), aver_af.st=mean(af.strides))
+	  headerPanel("비교군, 대조군 비교"),
 
+	  sidebarPanel(
 
-aver.cp.50<-summarise(comparison.50, aver_bf.eq=mean(bf.eq5d), aver_bf.gh=mean(bf.gh), aver_bf.mr=mean(bf.mr), aver_bf.vt=mean(bf.vt), aver_bf.st=mean(bf.strides), aver_af.eq=mean(af.eq5d), aver_af.gh=mean(af.gh), aver_af.mr=mean(af.mr), aver_af.vt=mean(af.vt), aver_af.st=mean(af.strides))
-aver.cp.60<-summarise(comparison.60, aver_bf.eq=mean(bf.eq5d), aver_bf.gh=mean(bf.gh), aver_bf.mr=mean(bf.mr), aver_bf.vt=mean(bf.vt), aver_bf.st=mean(bf.strides), aver_af.eq=mean(af.eq5d), aver_af.gh=mean(af.gh), aver_af.mr=mean(af.mr), aver_af.vt=mean(af.vt), aver_af.st=mean(af.strides))
-aver.cp.70<-summarise(comparison.70, aver_bf.eq=mean(bf.eq5d), aver_bf.gh=mean(bf.gh), aver_bf.mr=mean(bf.mr), aver_bf.vt=mean(bf.vt), aver_bf.st=mean(bf.strides), aver_af.eq=mean(af.eq5d), aver_af.gh=mean(af.gh), aver_af.mr=mean(af.mr), aver_af.vt=mean(af.vt), aver_af.st=mean(af.strides))
-aver.cp.over<-summarise(comparison.over, aver_bf.eq=mean(bf.eq5d), aver_bf.gh=mean(bf.gh), aver_bf.mr=mean(bf.mr), aver_bf.vt=mean(bf.vt), aver_bf.st=mean(bf.strides), aver_af.eq=mean(af.eq5d), aver_af.gh=mean(af.gh), aver_af.mr=mean(af.mr), aver_af.vt=mean(af.vt), aver_af.st=mean(af.strides))
+	    selectInput('x', 'X', c("age", "illness")),
+	    selectInput('y', 'Y', names(total)),
+	    selectInput('color', 'Seperation', c("None","char")),
+	    textInput("names", "환자이름:", value="Enter the name"),
 
-age<-c(50, 60, 70, 80)
-aver.cp<-rbind(aver.cp.50,aver.cp.60,aver.cp.70,aver.cp.over) 
-aver.cp$age<-age 
+	    selectInput("month1","select month", choices=c("m1","m2","m3","m4","m5","m6","m7","m8","m9","m10","m11","m12")),
+	    selectInput("month2", "select month2", choices=c("m1","m2","m3","m4","m5","m6","m7","m8","m9","m10","m11","m12"))
+	  ),
 
-aver.ex<-rbind(aver.ex.50,aver.ex.60,aver.ex.70,aver.ex.over)
-aver.ex$age<-age
-
-char<-c("comparison", "comparison", "comparison", "comparison")
-aver.cp$char<-char
-char<-c("experimental", "experimental","experimental","experimental")
-aver.ex$char<-char
-total<-rbind(aver.cp, aver.ex)
-diff.st<-total$aver_af.st-total$aver_bf.st
-diff.eq5d<-total$aver_af.eq-total$aver_bf.eq
-diff.mr<-total$aver_af.mr-total$aver_bf.mr
-total$diff.st<-diff.st
-total$diff.eq<-diff.eq5d
-total$diff.mr<-diff.mr
-shinyUI(
-  
-  # Use a fluid Bootstrap layout
-  fluidPage(    
-    
-    # Give the page a title
-    titlePanel("실험군 대조군 비교"),
-    # Generate a row with a sidebar
-    sidebarLayout(  
-      # Define the sidebar with one input
-      sidebarPanel(
-        selectInput("axis", "Please Select x-axis", choices=c("Age","Illness")),
-        selectInput("colnames", "indexes", choices=colnames(total)),
-        
-        
-        
-        hr(),
-        helpText("total")
-      ),
-      
-      # Create a spot for the barplot
-      mainPanel(
-        plotOutput("total")  
-      )
-    )
-  )
-)
-      
+	  mainPanel(
+	    plotOutput('plot'))
+	))
