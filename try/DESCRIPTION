@@ -1,8 +1,0 @@
-Package: try
-Title: just try (one line, title case)
-Version: 0.0.0.9000
-Authors: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-Depends: R (>= 3.2.1)
-License: What license is it under?
-LazyData: true
