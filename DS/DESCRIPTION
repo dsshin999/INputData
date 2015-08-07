@@ -1,0 +1,8 @@
+Package: DS
+Title: input data
+Version: 0.0.0.9000
+Author: Dongseok Shin <andy4712@naver.com>
+Description: inputdata
+Depends: R (>= 3.2.1)
+License: Dongseok Shin
+LazyData: true
